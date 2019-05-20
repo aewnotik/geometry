@@ -19,4 +19,4 @@ $(DIR)func.o: $(DAR)functions.c
 
 .PHONY: clean
 clean:
-rm -rf $(DIR)*.o
+	rm -rf $(DIR)*.o
