@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "functions.h"
 
 int main() {
   float x1, y1, r1, x2, y2, r2, r;
