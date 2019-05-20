@@ -1,19 +1,22 @@
-CC = g++
-EXECUTABLE = bin/main.out
-CFLAGS = -Wall -Werror -c -MD
-SOURCES = $(wildcard $(addprefix src/,*.cpp))
-OBJECTS = $(patsubst $(addprefix src/, %.cpp),$(addprefix build/, %.o),$(wildcard $(addprefix src/, *.cpp)))
-DEPENDENCIES = $(patsubst $(addprefix build/, %.o), $(addprefix build/, %.d), $(wildcard $(addprefix build/, *.o)))
+C = gcc 
+CFLAGS = -Wall -Werror
+EXECUTABLE = bin/main.exe 
+DIR = build/
+DAR = src/
+DUR = bin/
 
-all : $(SOURCES) $(EXECUTABLE)
 
-$(EXECUTABLE) : $(OBJECTS)
-	$(CC) $^ -o $@ -std=c++11
+all: $(EXECUTABLE) 
 
-build/%.o : src/%.cpp
-	$(CC) $(CFLAGS) $< -o $@ -std=c++11
+$(EXECUTABLE): $(DIR)main.o  $(DIR)func.o
+	$(CC) $(CFLAGS) -o $(EXECUTABLE) $(DIR)main.o $(DIR)functions.o -lm
 
-.PHONY : clean
+$(DIR)main.o: $(DAR)main.c 
+	$(CC) $(CFLAGS) -c -o $(DIR)main.o $(DAR)main.c -lm
+
+$(DIR)func.o: $(DAR)functions.c
+	$(CC) $(CFLAGS) -c -o $(DIR)functions.o $(DAR)functions.c -lm
+
+.PHONY: clean
 clean:
-rm -f $(OBJECTS) $(EXECUTABLE) $(DEPENDENCIES) 
-
+rm -rf $(DIR)*.o
