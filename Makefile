@@ -18,5 +18,7 @@ $(DIR)func.o: $(DAR)functions.c
 	$(CC) $(CFLAGS) -c -o $(DIR)functions.o $(DAR)functions.c -lm
 
 .PHONY: clean
+
 clean:
-	rm -rf $(DIR)*.o
+	rm -f $(DIR_BIN)/main
+        rm -f $(DIR_BUILD)/*.o
