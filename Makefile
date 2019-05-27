@@ -19,5 +19,4 @@ $(DIR)func.o: $(DAR)functions.c
 
 .PHONY: clean
 clean:
-	rm -f $(DIR_BIN)/main
-	rm -f $(DIR_BUILD)/*.o
+	rm -f $(OBJECTS) $(EXECUTABLE) $(DEPENDENCIES) 
