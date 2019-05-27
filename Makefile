@@ -1,3 +1,4 @@
+.PHONY:all clean
 C = gcc 
 CFLAGS = -Wall -Werror
 EXECUTABLE = bin/main.exe 
@@ -17,6 +18,5 @@ $(DIR)main.o: $(DAR)main.c
 $(DIR)func.o: $(DAR)functions.c
 	$(CC) $(CFLAGS) -c -o $(DIR)functions.o $(DAR)functions.c -lm
 
-.PHONY: clean
 clean:
 	rm -f $(OBJECTS) $(EXECUTABLE) $(DEPENDENCIES) 
